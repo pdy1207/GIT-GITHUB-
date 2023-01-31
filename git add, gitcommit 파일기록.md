@@ -24,10 +24,20 @@ git의 commit 기능을 쓰면 파일의 현재 상태를 매일 기록
 파일 현재 상태를 기록해두려면
 > **git add 파일명** <br>
 > **git commit -m '메모'**
+```
+1. git add로 기록할 파일부터 고르고
+2. 고른파일 기록명령은 git commit 
+```
 
 몰래 어딘가 기록이 됨. 기록이라기 보단 *'버전생성'*
 
+
+
+
 ### 용어정리
+
+![image](https://user-images.githubusercontent.com/110442250/215765716-b8244814-5bd9-41f3-a1d8-04bcbed9e296.png)
+
 
 1. **staging area**는 commit을 하기 전에 commit할 파일들을 골라놓는 곳입니다. <br>
 그리고 staging area에 파일넣는 행위를 staging이라고 합니다. <br>
@@ -52,7 +62,7 @@ repository의 실체를 구경하고 싶으면 작업폴더안에 숨겨져 있�
 ```
 - 작업 폴더의 모든 파일을 전부 스테이징 하고싶을때
 ```
-  git add 파일1, 파일2
+git status
 ```
 - 상태창!!!! 변경된 파일, 스테이징 파일 
 - 나 뭐했지? 했을때
