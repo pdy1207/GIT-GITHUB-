@@ -1,0 +1,79 @@
+## 브랜치를 다양한 방법으로 합치기
+
+```
+  3-way merge
+```
+
+- 브랜치에 각각 신규 commit이 1회 이상 있는 경우 commit을 자동생성해주는데, <br>
+  이러한 현상을 3-way merge
+
+```
+  fast-forward merge
+```
+- 새로운 브랜치에만 commit이 있고 <br>
+   기준이 되는 브랜치에는 신규 commit이 없음
+  
+> 딱히 없어 **신규 브랜치 보고 "너 main 브랜치!"** 라고 하는것 <br>
+> 싫으면 **git merge --no-ff** 브랜치명 해서 강제 3-way merge
+
+### 브랜치를 삭제
+```
+  git branch -d 브랜치이름
+  git branch -D 브랜치이름
+```
+ - 병합이 완료된 브랜치 삭제 -d 
+ - 병합하지 않은 브랜치 삭제 -D
+
+### rebase and merge
+
+ - rebase는 브랜치의 시작점을 다른 commit으로 옮겨주는 행위
+1. rebase를 이용하여 신규 브랜치의 시작점을 main 브랜치 최근 commit으로 옮김
+2. fast-forward merge하는것
+
+> 3-way merge 말고 강제로 fast-forward 하고싶을때<br>
+> 코드 잘짜는 고수 느낌을 줄때 <br>
+
+---
+### 사용법 
+1. 새로운 브랜로 이동
+2. git rebase main 
+3. 그럼 브랜치가 main 브랜치 끝으로 이동 함 그걸 `fast-forward merge`
+
+```
+ggit switch 새로운브랜치
+git rebase main
+
+git switch main
+git merge 새로운브랜치
+```
+- rebase 끝
+- 한줄비유 : 강제 fast-forward merge
+
+※ 브랜치끼리 차이가 너무 많은 경우 rebase하면 충돌이 발생
+
+### squash and merge 하는경우?
+
+- 3-way merge 된 것들은 매우 복잡
+- main 브랜치 git log 출력해보면 3-way merge된 브랜치들의 commit 내역도 다 같이 출력되어서 더러워짐 
+
+#### 이러기 싫다!! 
+
+ > **rebase 아니면 squash and merge** 
+
+### squash and merge
+
+- main 브랜치로 텔레포트 해줌
+
+```
+  git switch main
+  git merge --squash 브랜치명
+  git commit -m '메세지'
+```
+- --squash 옵션 추가
+- 브랜치에 만들어 놨떤 많은 commit을 다합쳐서 하나의 commit 으로 main 브랜치 생성
+
+
+※ merge를 잔뜩 해놓으면 나중에 git log 그래프가 매우 복잡해질 수 있습니다. <br>
+※ quash 해보십시오. 또는 rebase 해도 마찬가지로 해결가능<br>
+※ 중요한 브랜치 마다 merge 방법 가이드라인이 있음
+
